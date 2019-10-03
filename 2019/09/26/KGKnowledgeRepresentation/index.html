@@ -16,16 +16,16 @@
 <meta property="og:site_name" content="Monica&#39;s Blog">
 <meta property="og:description" content="知识表示概念知识表示是认知科学与人工智能两个领域共同存在的问题。在认知科学里，它关系到人类如何储存和处理资料；在人工智能里，其主要目标是存储知识，让程序能够处理，达到人类的智慧。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2019/09/26/KGKnowledgeRepresentation/ALC.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/26/KGKnowledgeRepresentation/RDF.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/26/KGKnowledgeRepresentation/RDFSchema.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/26/KGKnowledgeRepresentation/OWL.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/26/KGKnowledgeRepresentation/OWLFamily.png">
-<meta property="og:updated_time" content="2019-09-27T07:38:21.972Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/26/KGKnowledgeRepresentation/ALC.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/09/26/KGKnowledgeRepresentation/RDF.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/09/26/KGKnowledgeRepresentation/RDFSchema.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/09/26/KGKnowledgeRepresentation/OWL.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/09/26/KGKnowledgeRepresentation/OWLFamily.PNG">
+<meta property="og:updated_time" content="2019-10-03T02:46:45.601Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="知识图谱学习之知识表示">
 <meta name="twitter:description" content="知识表示概念知识表示是认知科学与人工智能两个领域共同存在的问题。在认知科学里，它关系到人类如何储存和处理资料；在人工智能里，其主要目标是存储知识，让程序能够处理，达到人类的智慧。">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/26/KGKnowledgeRepresentation/ALC.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/26/KGKnowledgeRepresentation/ALC.PNG">
   
     <link rel="alternative" href="/atom.xml" title="Monica&#39;s Blog" type="application/atom+xml">
   
@@ -219,7 +219,7 @@
 <li>概念（concept）：描述世界的抽象术语</li>
 <li>关系（Role）：概念之间的联系</li>
 <li>实例（individual）：唯一个体</li>
-<li>公理（axiom）：不证自明的命题<br>ALC：<br><img src="/2019/09/26/KGKnowledgeRepresentation/ALC.png" alt></li>
+<li>公理（axiom）：不证自明的命题<br>ALC：<br><img src="/2019/09/26/KGKnowledgeRepresentation/ALC.PNG" alt></li>
 </ul>
 </li>
 <li>2000-2010: 语义网（semantic web: RDF&amp; OWL -Tim Berners Lee）<ul>
@@ -235,7 +235,7 @@
 <li>资源（resource）：ERI标识的所有事物</li>
 <li>文字（literal）：字符串或数据类型的值</li>
 <li>属性（property）：描述资源特征、属性、或关系</li>
-<li>声明（statement）：一个资源加上属性及属性值<br><img src="/2019/09/26/KGKnowledgeRepresentation/RDF.png" alt><ul>
+<li>声明（statement）：一个资源加上属性及属性值<br><img src="/2019/09/26/KGKnowledgeRepresentation/RDF.PNG" alt><ul>
 <li>Schema:用于定义和描述词汇集</li>
 </ul>
 </li>
@@ -243,7 +243,7 @@
 <li>类层次： rdfs:subClassOf</li>
 <li>实例定义： rdf:type</li>
 <li>属性定义： rdfs:range,rdfs:domain</li>
-<li>属性层次： rdfs:subPropertyOf<br><img src="/2019/09/26/KGKnowledgeRepresentation/RDFSchema.png" alt><blockquote>
+<li>属性层次： rdfs:subPropertyOf<br><img src="/2019/09/26/KGKnowledgeRepresentation/RDFSchema.PNG" alt><blockquote>
 <p>&lt;rdfs:Class rdf:ID=”Person”&gt;<br><a href="rdfs:comment" target="_blank" rel="noopener">rdfs:comment</a>The class of people.<br>&lt;rdfs:subClassOf<br>rdf:resource=”<a href="http://www.classtypes.org/useful_classes#Animal&quot;/&gt;" target="_blank" rel="noopener">http://www.classtypes.org/useful_classes#Animal&quot;/&gt;</a><br><br>&lt;rdf:Property ID=”name”&gt;<br><a href="rdfs:comment" target="_blank" rel="noopener">rdfs:comment</a>Person Name<br>&lt;rdfs:range rdf:resource=”<a href="http://www.datatypes.org/useful_types#USAddress&quot;/&gt;" target="_blank" rel="noopener">http://www.datatypes.org/useful_types#USAddress&quot;/&gt;</a><br>&lt;rdfs:domain rdf:resource=”#Person”/&gt;<br><br>&lt;rdf:Property ID=”address”&gt;<br><a href="rdfs:comment" target="_blank" rel="noopener">rdfs:comment</a>Email Address<br>&lt;rdfs:range rdf:resource=”<a href="http://www.datatypes.org/useful_types#EmailAddress&quot;/&gt;" target="_blank" rel="noopener">http://www.datatypes.org/useful_types#EmailAddress&quot;/&gt;</a><br>&lt;rdfs:domain rdf:resource=”#Person”/&gt;<br></p>
 </blockquote>
 </li>
@@ -253,7 +253,7 @@
 <li>设计思想：<ul>
 <li>扩展RDFS，语法规则采用RDFS/XML，语义严格遵守描述逻辑</li>
 <li>根据应用对表达能力和推理复杂度的不同要求，OWL提供了OWL DL和OWL Lite两种子语言</li>
-<li>为完全兼容RDFS，提供了OWL Full，其中包括了OWL DL的全部内容，但使得OWL Full推理问题不可判定。<br><img src="/2019/09/26/KGKnowledgeRepresentation/OWL.png" alt><br><img src="/2019/09/26/KGKnowledgeRepresentation/OWLFamily.png" alt></li>
+<li>为完全兼容RDFS，提供了OWL Full，其中包括了OWL DL的全部内容，但使得OWL Full推理问题不可判定。<br><img src="/2019/09/26/KGKnowledgeRepresentation/OWL.PNG" alt><br><img src="/2019/09/26/KGKnowledgeRepresentation/OWLFamily.PNG" alt></li>
 </ul>
 </li>
 </ul>
