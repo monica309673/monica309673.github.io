@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="Monica&#39;s Blog">
 <meta property="og:description" content="知识图谱之知识建模本体 In computer science and information science,an ontology is a formal representation of knowledge as a set of concepts within a domain , and the relationships between those concepts.It is us">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2019/09/30/KGKnowledgeModeling/ontologybottleneck.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/30/KGKnowledgeModeling/transfer.png">
-<meta property="og:updated_time" content="2019-10-02T14:04:41.221Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/30/KGKnowledgeModeling/ontologybottleneck.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/09/30/KGKnowledgeModeling/transfer.PNG">
+<meta property="og:updated_time" content="2019-10-03T02:42:10.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="知识图谱之知识建模">
 <meta name="twitter:description" content="知识图谱之知识建模本体 In computer science and information science,an ontology is a formal representation of knowledge as a set of concepts within a domain , and the relationships between those concepts.It is us">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/30/KGKnowledgeModeling/ontologybottleneck.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/30/KGKnowledgeModeling/ontologybottleneck.PNG">
   
     <link rel="alternative" href="/atom.xml" title="Monica&#39;s Blog" type="application/atom+xml">
   
@@ -217,10 +217,10 @@
 </blockquote>
 <h3 id="本体学习（自动）"><a href="#本体学习（自动）" class="headerlink" title="本体学习（自动）"></a>本体学习（自动）</h3><ul>
 <li>方法一：基于规则的本体学习<br>人工写模板规则来抽取本体，利用专家知识可以保证本体生成的质量，但是不好扩展、而且人工模板规则不足，相互之间会存在冲突。<br>如：microsoft’s browser <strong>等价</strong> internet explorer<br>  the times <strong>is a</strong> news organization</li>
-<li>方法二：基于机器学习的本体学习<br>将本体学习转化为机器学习中的分类或序列标注问题；通过选取特征和学习模型，进行训练，学习得到本体。这种方法的优点是效率高，自动化完成，但是存在学习模型通用性和学习效果存在矛盾的缺陷。<br><img src="/2019/09/30/KGKnowledgeModeling/ontologybottleneck.png" alt></li>
+<li>方法二：基于机器学习的本体学习<br>将本体学习转化为机器学习中的分类或序列标注问题；通过选取特征和学习模型，进行训练，学习得到本体。这种方法的优点是效率高，自动化完成，但是存在学习模型通用性和学习效果存在矛盾的缺陷。<br><img src="/2019/09/30/KGKnowledgeModeling/ontologybottleneck.PNG" alt></li>
 </ul>
 <h3 id="典型算法"><a href="#典型算法" class="headerlink" title="典型算法"></a>典型算法</h3><ul>
-<li>基于最大熵的迁移学习模型<br>结合迁移学习框架提出了基于最大熵的迁移学习模型，解决了传统大熵模型的领域依赖性。<br><img src="/2019/09/30/KGKnowledgeModeling/transfer.png" alt></li>
+<li>基于最大熵的迁移学习模型<br>结合迁移学习框架提出了基于最大熵的迁移学习模型，解决了传统大熵模型的领域依赖性。<br><img src="/2019/09/30/KGKnowledgeModeling/transfer.PNG" alt></li>
 <li>基于迁移学习的通用本体学习模型<br>通过知识迁移，模型预测出结果的F值平均提升了3%，平均达到86%左右；错误率平均降低3%，平均达到11%左右。</li>
 <li>基于视觉树的本体生成算法<br>自上而下的对is-a关系进行寻找，F值平均达到90.22%；自下而上的使用集合划分思想对subclass-of关系进行寻找，F值平均达到72.24%。</li>
 </ul>
