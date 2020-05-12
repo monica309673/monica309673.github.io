@@ -571,7 +571,101 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>尝试用二维数组实现贪吃蛇，代码如下。<br>  <img src="/2019/09/25/KGstudyFirst/code1.PNG" alt><br>  <img src="/2019/09/25/KGstudyFirst/code2.PNG" alt><br>  <img src="/2019/09/25/KGstudyFirst/code3.PNG" alt><br>  <img src="/2019/09/25/KGstudyFirst/code4.PNG" alt><br>  <img src="/2019/09/25/KGstudyFirst/code5.PNG" alt><br>  <img src="/2019/09/25/KGstudyFirst/code6.PNG" alt><br>  <img src="/2019/09/25/KGstudyFirst/code7.PNG" alt></p>
+        <p>尝试用二维数组实现贪吃蛇，代码如下。</p>
+<p>Game.cpp</p>
+<p>#include “Game.h”</p>
+<p>Game::Game()<br>{<br>    for (i = 1; i &lt;= H - 2; i++)<br>        for (j = 1; j &lt;= W - 2; j++)<br>            g_map[i][j] = ‘ ‘;<br>    for (i = 0; i &lt;= H - 1; i++)<br>        g_map[0][i] = g_map[H - 1][i] = ‘#’;<br>    for (i = 1; i &lt;= H - 2; i++)<br>        g_map[i][0] = g_map[i][W - 1] = ‘#’;<br>    food();<br>}</p>
+<p>void Game::food()<br>{<br>    srand(time(0));<br>    do<br>    {<br>        Food_x = rand() % W - 2 + 1;<br>        Food_y = rand() % H - 2 + 1;<br>    } while (g_map[Food_x][Food_y] != ‘ ‘);<br>    g_map[Food_x][Food_y] = ‘$’;<br>}</p>
+<p>void Game::print(int grade, int score, int gamespeed)<br>{<br>    system(“cls”);<br>    cout &lt;&lt; endl;<br>    for (i = 0; i &lt; H; i++)<br>    {<br>        cout &lt;&lt; “\t”;<br>        for (j = 0; j &lt; W; j++)<br>            cout &lt;&lt; g_map[i][j] &lt;&lt; ‘ ‘;<br>        if (i == 0) cout &lt;&lt; “\tGrade:” &lt;&lt; grade;<br>        if (i == 2) cout &lt;&lt; “\tScore:” &lt;&lt; score;<br>        if (i == 4) cout &lt;&lt; “\tAutomatic forward”;<br>        if (i == 5) cout &lt;&lt; “\ttime interval:” &lt;&lt; gamespeed &lt;&lt; “ms”;<br>        cout &lt;&lt; endl;<br>    }<br>}</p>
+<p>Game.h</p>
+<p>#pragma once</p>
+<p>#include <iostream></iostream></p>
+<p>#include &lt;time.h&gt;</p>
+<p>#define H 22</p>
+<p>#define W 22<br>using namespace std;</p>
+<p>class Game<br>{<br>protected:<br>    char g_map[H][W];<br>    int i, j;<br>    int Food_x;<br>    int Food_y;<br>public:</p>
+<pre><code>Game();    
+void food();
+void print(int grade, int score, int gamespeed);</code></pre><p>};</p>
+<p>main.cpp</p>
+<p>#include “Game.h”</p>
+<p>#include “Snake.h”</p>
+<p>int main()<br>{<br>    Game map;<br>    Snake snake;<br>    snake.Play();<br>    return 0;<br>}</p>
+<p>snake.cpp</p>
+<p>#include “Snake.h”</p>
+<p>#include &lt;conio.h&gt;</p>
+<p>Snake::Snake()<br>{<br>    int i;<br>    for (i = 1; i &lt;= 3; i++)<br>        g_map[1][i] = ‘*’;<br>    g_map[1][4] = ‘@’;<br>    for (i = 0; i &lt; 4; i++)<br>    {<br>        snake[0][i] = 1;<br>        snake[1][i] = i + 1;<br>    }<br>}</p>
+<p>void Snake::Play()<br>{<br>    //forward right<br>    direction = 77;<br>    int head = 3;<br>    while (true)<br>    {<br>        int timeover;<br>        timeover = 1;<br>        start = clock();<br>        int gamespeed = 500;<br>        while ((timeover = (clock() - start &lt;= gamespeed)) &amp;&amp; !_kbhit());<br>        if (timeover)<br>        {<br>            _getch();<br>            direction = _getch();<br>        }</p>
+<pre><code>/*    up:        -32  72
+    down�� - 32  80
+    left�� - 32  75
+    right�� - 32  77 */
+
+    switch (direction)
+    {
+    case 72: head_x = snake[0][head] - 1; head_y = snake[1][head]; break;
+    case 80: head_x = snake[0][head] + 1; head_y = snake[1][head]; break;
+    case 75: head_x = snake[0][head]; head_y = snake[1][head] - 1; break;
+    case 77: head_x = snake[0][head]; head_y = snake[1][head] + 1; break;
+    }
+    //touch wall
+    if (head_x == 0 || head_x == 21 || head_y == 0 || head_y == 21)
+    {
+        cout &lt;&lt; &quot;\tGame over!&quot; &lt;&lt; endl; break;
+    }
+    //head not in space, and not in food. Means Bait itself
+    if (g_map[head_x][head_y] != &apos; &apos; &amp;&amp; !(head_x == Food_x &amp;&amp; head_y == Food_y))
+    {
+        cout &lt;&lt; &quot;\tGame over!&quot; &lt;&lt; endl; break;
+    }
+    int grade = 1;
+    int score = 0;
+    if (head_x == Food_x &amp;&amp; head_y == Food_y)
+    {
+        int length = 4;
+        length++;
+        score = score + 100;
+        if (length &gt;= 8)
+        {
+            length -= 8;
+            grade++;
+            if (gamespeed &gt;= 200)
+                gamespeed = 550 - grade * 50;//level up
+        }
+        //food position become @
+        g_map[head_x][head_y] = &apos;@&apos;;
+        //head become *
+        g_map[snake[0][head]][snake[1][head]] = &apos;*&apos;;
+        //create new head
+        head = (head + 1) % 100;
+        snake[0][head] = head_x;
+        snake[1][head] = head_y;
+        //create food again
+        food();
+        print(grade, score, gamespeed);
+    }
+    else//didn&apos;t eat food
+    {
+        int tail = 0;
+        g_map[snake[0][tail]][snake[1][tail]] = &apos; &apos;; //tail become space(disappear)
+        tail = (tail + 1) % 100;
+        g_map[snake[0][head]][snake[1][head]] = &apos;*&apos;; // head become *
+        head = (head + 1) % 100;
+        snake[0][head] = head_x;
+        snake[1][head] = head_y;
+        g_map[snake[0][head]][snake[1][head]] = &apos;@&apos;; //new head part become @
+        print(grade, score, gamespeed);//renews
+    }
+}</code></pre><p>}</p>
+<p>snake.h</p>
+<p>#pragma once</p>
+<p>#include “Game.h”</p>
+<p>#define H 22</p>
+<p>#define W 22</p>
+<p>class Game;</p>
+<p>class Snake:public Game<br>{<br>private:<br>    int snake[2][100];//the position of head and tail<br>    long start;<br>    int head_x;//new head position<br>    int head_y;<br>    char direction;</p>
+<p>public:<br>    //char g_map[H][W];<br>    Snake();<br>    void Play();<br>};</p>
+<p><img src="/2019/09/25/KGstudyFirst/test.png" alt></p>
 
       
 
